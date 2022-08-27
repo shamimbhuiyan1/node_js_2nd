@@ -6,6 +6,7 @@ console.log(res); */
 //core module
 const ohter = require("./index");
 const http = require("http");
+const { stringify } = require("querystring");
 const server = http.createServer((req, res) => {
   if (req.url == "/") {
     res.writeHead(200, { "Content-Type": "text/html" });
@@ -22,6 +23,15 @@ const server = http.createServer((req, res) => {
     res.write("<p>This is the About Us page</p>");
     res.end();
   }
+
+  //uporer mto na kre o amra text/html er jagate application.json die korte pari.
+
+  if (req.url == "/course") {
+    res.writeHead(200, { "Content-Type": "application/json" });
+    res.write(JSON.stringify({ course: "ACC" }));
+    res.end();
+  }
+
   // res.end("Welcome to my first Node js server.");
   /*  console.log(req.url); */
 });
