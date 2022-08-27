@@ -22,10 +22,19 @@ const server = http.createServer((req, res) => {
   /*--------------------------------
      synchronous file system module
     --------------------------------------------*/
-  if ((req.url = "/")) {
+  /* if ((req.url = "/")) {
     const data = fs.readFileSync("data.txt");
-    res.end(data);
-  }
+    res.end(data);} */
+
+  fs.writeFile("Newdata.txt", "Hello Node js.", (err) => {
+    if (err) {
+      res.write("Datafailed to write");
+      res.end();
+    } else {
+      res.write("data written successfully");
+      res.end();
+    }
+  });
 });
 
 //url method
